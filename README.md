@@ -2,6 +2,10 @@
 
 [English](README.md) | [简体中文](README.zh-CN.md)
 
+[![CI](https://github.com/dengshu2/imgup/actions/workflows/ci.yml/badge.svg)](https://github.com/dengshu2/imgup/actions/workflows/ci.yml)
+[![Go Reference](https://pkg.go.dev/badge/github.com/dengshu2/imgup.svg)](https://pkg.go.dev/github.com/dengshu2/imgup)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+
 A small, dependency-free CLI that uploads images to a **Cloudflare R2** bucket and prints the public URL. It speaks the S3 API directly via `aws-sdk-go-v2` — no Node, no Python, no GUI, no background daemon. Drop the single static binary into your `PATH` and go.
 
 `imgup` is built to be scriptable: the public URL goes to **stdout**, everything else (progress, warnings) goes to **stderr**, so it composes cleanly in pipelines and thin wrappers.

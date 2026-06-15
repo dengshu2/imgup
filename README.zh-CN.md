@@ -2,6 +2,10 @@
 
 [English](README.md) | [简体中文](README.zh-CN.md)
 
+[![CI](https://github.com/dengshu2/imgup/actions/workflows/ci.yml/badge.svg)](https://github.com/dengshu2/imgup/actions/workflows/ci.yml)
+[![Go Reference](https://pkg.go.dev/badge/github.com/dengshu2/imgup.svg)](https://pkg.go.dev/github.com/dengshu2/imgup)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+
 一个轻量、零依赖的命令行工具,把图片上传到 **Cloudflare R2** 存储桶并输出公开 URL。它通过 `aws-sdk-go-v2` 直连 S3 API——不需要 Node、Python、GUI 或常驻后台进程。编译成单个静态二进制,丢进 `PATH` 即可用。
 
 `imgup` 为脚本化而设计:**公开 URL 走 stdout,其余信息(进度、警告)走 stderr**,因此能干净地嵌入管道和上层薄封装。

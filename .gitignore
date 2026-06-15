@@ -1,5 +1,6 @@
 # Binaries
 /imgup
+/bin/
 /dist/
 *.exe
 

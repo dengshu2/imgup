@@ -1,0 +1,53 @@
+# GoReleaser config — cross-compiles imgup and publishes archives to a GitHub
+# Release on every pushed v* tag. See https://goreleaser.com.
+version: 2
+
+project_name: imgup
+
+before:
+  hooks:
+    - go mod tidy
+
+builds:
+  - main: .
+    binary: imgup
+    env:
+      - CGO_ENABLED=0
+    goos:
+      - linux
+      - darwin
+      - windows
+    goarch:
+      - amd64
+      - arm64
+    ldflags:
+      - -s -w -X github.com/dengshu2/imgup/cmd.version={{ .Version }}
+
+archives:
+  - formats: [tar.gz]
+    name_template: >-
+      {{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}
+    format_overrides:
+      - goos: windows
+        formats: [zip]
+    files:
+      - README.md
+      - README.zh-CN.md
+      - LICENSE
+
+checksum:
+  name_template: checksums.txt
+
+changelog:
+  sort: asc
+  filters:
+    exclude:
+      - '^docs:'
+      - '^test:'
+      - '^ci:'
+      - '^chore:'
+
+release:
+  github:
+    owner: dengshu2
+    name: imgup
